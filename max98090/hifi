@@ -1,0 +1,64 @@
+# Use case Configuration for device
+# By Inha Song <ideal.song@samsung.com>
+
+SectionVerb {
+  EnableSequence [
+  ]
+  DisableSequence [
+  ]
+
+  Value {
+    TQ "Music"
+    PlaybackCTL "hw:0"
+    CaptureCTL "hw:0"
+  }
+}
+
+SectionDevice."Headphones" {
+  Comment "built-in Headphones"
+
+  EnableSequence [
+# Gain
+    cset "name='Headphone Volume' 20 20"
+# Path
+    cset "name='MIXHPRSEL Mux' 0"
+    cset "name='MIXHPLSEL Mux' 0"
+    cset "name='Headphone Left Switch' 1"
+    cset "name='Headphone Right Switch' 1"
+  ]
+
+  DisableSequence [
+# Path
+    cset "name='Headphone Left Switch' 0"
+    cset "name='Headphone Right Switch' 0"
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionDevice."HeadsetMic" {
+  Comment "external headset mic"
+
+  EnableSequence [
+# Gain
+    cset "name='MIC1 Volume' 5"
+    cset "name='ADCL Volume' 5"
+    cset "name='ADCR Volume' 5"
+# Path
+    cset "name='MIC1 Mux' 0"
+    cset "name='Right ADC Mixer MIC1 Switch' 1"
+    cset "name='Left ADC Mixer MIC1 Switch' 1"
+  ]
+
+  DisableSequence [
+# Path
+    cset "name='Right ADC Mixer MIC1 Switch' 0"
+    cset "name='Left ADC Mixer MIC1 Switch' 0"
+  ]
+
+  Value {
+    CapturePCM "hw:0,0"
+  }
+}

@@ -1,0 +1,53 @@
+# Use case Configuration for Mobile device
+# By Inha Song <ideal.song@samsung.com>
+
+SectionVerb {
+  EnableSequence [
+  ]
+  DisableSequence [
+  ]
+
+  Value {
+    TQ "Music"
+    PlaybackCTL "hw:0"
+    CaptureCTL "hw:0"
+  }
+}
+
+SectionDevice."All" {
+  Comment "reset all"
+
+  EnableSequence [
+    cset "name='Headphone Left Switch' 0"
+    cset "name='Headphone Right Switch' 0"
+    cset "name='Right ADC Mixer MIC1 Switch' 0"
+    cset "name='Left ADC Mixer MIC1 Switch' 0"
+  ]
+
+  DisableSequence [
+  ]
+}
+SectionDevice."Playback" {
+  Comment "reset playback"
+
+  EnableSequence [
+    cset "name='Headphone Left Switch' 0"
+    cset "name='Headphone Right Switch' 0"
+  ]
+
+  DisableSequence [
+  ]
+}
+
+SectionDevice."Capture" {
+  Comment "reset capture"
+
+  EnableSequence [
+    cset "name='Right ADC Mixer MIC1 Switch' 0"
+    cset "name='Left ADC Mixer MIC1 Switch' 0"
+  ]
+
+  DisableSequence [
+  ]
+}
+
