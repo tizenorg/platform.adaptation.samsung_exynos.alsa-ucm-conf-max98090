@@ -38,6 +38,55 @@ SectionDevice."Headphones" {
   }
 }
 
+SectionDevice."Speaker" {
+  Comment "built-in Speaker"
+
+  EnableSequence [
+# Gain
+    cset "name='Headphone Volume' 20 20"
+# Path
+    cset "name='MIXHPRSEL Mux' 0"
+    cset "name='MIXHPLSEL Mux' 0"
+    cset "name='Headphone Left Switch' 1"
+    cset "name='Headphone Right Switch' 1"
+  ]
+
+  DisableSequence [
+# Path
+    cset "name='Headphone Left Switch' 0"
+    cset "name='Headphone Right Switch' 0"
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionDevice."MainMic" {
+  Comment "built-in main mic"
+
+  EnableSequence [
+# Gain
+    cset "name='MIC1 Volume' 5"
+    cset "name='ADCL Volume' 5"
+    cset "name='ADCR Volume' 5"
+# Path
+    cset "name='MIC1 Mux' 0"
+    cset "name='Right ADC Mixer MIC1 Switch' 1"
+    cset "name='Left ADC Mixer MIC1 Switch' 1"
+  ]
+
+  DisableSequence [
+# Path
+    cset "name='Right ADC Mixer MIC1 Switch' 0"
+    cset "name='Left ADC Mixer MIC1 Switch' 0"
+  ]
+
+  Value {
+    CapturePCM "hw:0,0"
+  }
+}
+
 SectionDevice."HeadsetMic" {
   Comment "external headset mic"
 
